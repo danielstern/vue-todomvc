@@ -1,3 +1,6 @@
+(function () {
+    'use strict';
+
 /**
  * Vue TODOMVC Application
  * Author : Daniel Stern
@@ -8,15 +11,19 @@
  * The todos are the "model" of this application. In a real-world example, they would probably be loaded asynchronously, though they could also be injected via server-side rendering.
  * Changing these todos will change their appearance in the application.
  */
-let todos = [{
+
+var todos = [{
+    id: 1,
     name:"Debug UI",
-    complete: false,
+    completed: false,
 },{
+    id: 2,
     name:"Refactor build step",
-    complete: true
+    completed: true
 },{
+    id: 3,
     name: "Upgrade Component",
-    complete: false
+    completed: false
 }];
 
 /**
@@ -42,8 +49,9 @@ new Vue({
     data:()=>(
         {
             todos,
-            text:``,
+            text:'',
             showComplete:true,
+            index: todos.length
         }
     ),
 
@@ -58,7 +66,7 @@ new Vue({
          */
         filteredTodos(){
             return this.todos
-                .filter(todo=>this.showComplete ? true : !todo.complete);
+                .filter(todo=>this.showComplete ? true : !todo.completed);
         },
 
         /**
@@ -81,14 +89,16 @@ new Vue({
          */
         addTodo(){
             todos.push({
+                id:++(this.index),
                 name:this.text,
-                complete:false
+                completed:false
             });
 
             /**
              * Vue components can access their own properties through the "this" special keyword.
              */
-            this.text = ``;
+            this.text = '';
         },
     }
 });
+})();

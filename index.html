@@ -1,10 +1,17 @@
+<!DOCTYPE html>
 <head>
     <title>
         Vue Big Picture - TodoMVC
     </title>
 
     <!-- Bootstrap styles are used throughout this application. They are all included in this one CSS Link. -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 
     <!-- The app uses a very limited number of styles, found in its local CSS file here. -->
     <link rel="stylesheet" href="style.css">
@@ -13,6 +20,7 @@
     <h1 class="mt-5">
         Vue TodoMVC
     </h1>
+    
 
     <!-- This div, with the ID "app", is where the application appears when it runs. -->
     <div id="app"></div>
@@ -23,8 +31,7 @@
 
             <!-- Here the v:on attribute is used, which is used to respond to any event. In this case, when the "click" event happens, it causes the value of showComplete to be changed. It is attached here to the label. -->
             <h4>
-                <label v-on:click="showComplete = !showComplete">
-
+                <label>
                     <!-- The v-model attribute causes the checkdness of this box to always mirror the application's state  -->
                     <input type="checkbox" v-model="showComplete">
                     Show Completed
@@ -34,21 +41,25 @@
             <!-- This list group contains a Vue repeater.-->
             <ul class="list-group">
 
+
+                <!-- To give Vue a hint so that it can track each node’s identity, and thus reuse and reorder existing elements, you need to provide a unique key attribute for each item. An ideal value for key would be the unique id of each item. This special attribute is a rough equivalent to track-by in 1.x, but it works like an attribute, so you need to use v-bind to bind it to dynamic values (using shorthand here):
+                e.g.
+                <div v-for="item in items" :key="item.id">-->
+                 <!-- content -->
+                <!-- </div>
+                It is recommended to provide a key with v-for whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains. --> 
                 <!-- The v-for attribute that we see here repeats whatever tag it is on (in this case, a LI) one time for each element of the referenced list, which in this case is our list. Each repetition, the property has a different value.  -->
-                <li v-for="todo in filteredTodos" class="list-group-item" v-on:click="todo.complete = !todo.complete;">
+                <li v-for="value in filteredTodos" :key="value.id" class="list-group-item" >
                     <label class="form-check-label ml-4">
                         <input
                                 type="checkbox"
-                                v-model="todo.complete"
+                                v-model="value.completed"
                                 class="form-check-input">
-
-                        <!-- v-bind is used to change the value of HTML attributes, in this case the class attribute. -->
-                        <span
-                                v-bind:class="{completed:todo.complete}">
-
-                                <!-- Here we see an example of Vue's {{ }} syntax, which is quite familiar to any Angular or Handlebars users.-->
-                                {{ todo.name }}
-                            </span>
+                                <!-- v-bind is used to change the value of HTML attributes, in this case the class attribute. -->
+                                <span v-bind:class="{completed: value.completed}">
+                                    <!-- Here we see an example of Vue's {{ }} syntax, which is quite familiar to any Angular or Handlebars users.-->
+                                    {{ value.name }}
+                                </span>
                     </label>
                 </li>
             </ul>
@@ -72,7 +83,8 @@
     </script>
 
     <!-- Vue can be included as a script tag at the end of the application's HTML. There is no need for a build step at all, if you don't want one. -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <!-- Finally, the JavaScript file containing our application logic. -->
     <script src="app.js"></script>
