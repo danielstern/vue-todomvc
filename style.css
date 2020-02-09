@@ -1,7 +1,7 @@
 /* These minimal styles make the list look more consistent. */
 
 .completed {
-    font-style: italic;;
+    font-style: italic;
     text-decoration: line-through;
     color: gray;
 }
