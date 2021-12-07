@@ -5,8 +5,8 @@
  **/
 
 /**
- * The todos are the "model" of this application. In a real-world example, they would probably be loaded asynchronously, though they could also be injected via server-side rendering.
- * Changing these todos will change their appearance in the application.
+* Les todos sont le "modèle" de cette application. Dans un exemple réel, ils seraient probablement chargés de manière asynchrone, bien qu'ils puissent également être injectés via le rendu côté serveur.
+* Changer ces todos changera leur apparence dans l'application.
  */
 let todos = [{
     name:"Debug UI",
@@ -20,24 +20,24 @@ let todos = [{
 }];
 
 /**
- * All Vue applications are initialized with a `new Vue()` method call. The object that is passed to the method call is the configuration for our whole application.
+ * Toutes les applications Vue sont initialisées avec un appel de méthode `new Vue()`. L'objet qui est passé à l'appel de méthode est la configuration de l'ensemble de notre application.
  */
 new Vue({
     /**
-     * The "el" option indicates which HTML element the application should initially load, into. If you look at `index.html`, you will notice a div tag with the ID #app. This initial load process is also known as "bootstrapping."
+     *L'option "el" indique dans quel élément HTML l'application doit initialement charger. Si vous regardez `index.html`, vous remarquerez une balise div avec l'ID #app. Ce processus de chargement initial est également connu sous le nom de "bootstrapping."
      */
     el:`#app`,
 
     /**
-     * The template for the application defines the basic structure of its HTML.
-     * There are many ways to define a template in Vue, but this example uses HTML templates. If you look at the Index file, you will see an `x-template` tag with this ID. Changing the contents of that tag will change the way the application looks.
-     * Other ways to define a template include using JSX or just a JavaScript string.
+     * Le modèle de l'application définit la structure de base de son HTML.
+      * Il existe de nombreuses façons de définir un modèle dans Vue, mais cet exemple utilise des modèles HTML. Si vous regardez le fichier d'index, vous verrez une balise `x-template` avec cet ID. Changer le contenu de cette balise changera l'apparence de l'application.
+      * D'autres façons de définir un modèle incluent l'utilisation de JSX ou simplement d'une chaîne JavaScript.
      */
     template:"#app-template",
 
     /**
-     * The data method is called by the component, and the values returned become the data model for that component.
-     * The todos being passed here are defined at the top of this file.
+     *  La méthode de données est appelée par le composant et les valeurs renvoyées deviennent le modèle de données pour ce composant.
+      * Les todos passés ici sont définis en haut de ce fichier.
      */
     data:()=>(
         {
@@ -48,13 +48,13 @@ new Vue({
     ),
 
     /**
-     * Computed properties are like data, except instead of a specific value, they are a function. The function is called and then the component can use the value that is returned, like a normal property.
-     * Computed properties can take various factors into account - for example, the filteredTodos computed property is different depending on the status of the showComplete property of the application.
+        * Les propriétés calculées sont comme des données, sauf qu'au lieu d'une valeur spécifique, elles sont une fonction. La fonction est appelée, puis le composant peut utiliser la valeur renvoyée, comme une propriété normale.
+        * Les propriétés calculées peuvent prendre en compte divers facteurs - par exemple, la propriété calculée filteredTodos est différente selon le statut de la propriété showComplete de l'application.
      */
     computed:{
 
         /**
-         * Returns a list of todos with the completed ones removed, when the application is so configured.
+         * Renvoie une liste de tâches avec celles terminées supprimées, lorsque l'application est ainsi configurée.
          */
         filteredTodos(){
             return this.todos
@@ -62,8 +62,8 @@ new Vue({
         },
 
         /**
-         * A boolean indicating if the submit button should be disabled, based on the content of the input box.
-         * This method could be upgraded to take into accounts other things - like if the text input is valid based on the output of some validator.
+         * Un booléen indiquant si le bouton de soumission doit être désactivé, en fonction du contenu de la zone de saisie.
+          * Cette méthode pourrait être mise à niveau pour prendre en compte d'autres choses - comme si l'entrée de texte est valide en fonction de la sortie d'un validateur.
          */
         submitIsDisabled(){
             return this.text == "";
@@ -71,13 +71,13 @@ new Vue({
     },
 
     /**
-     * The methods property of a Vue app contains functions, which are usually called from the template, though they can be called from elsewhere in the script, too.
-     * If you look in the template, you will find a form which calls this "addTodo()" method.
-     * Methods are the preferred way of doing an action that changes the data model.
+     *  La propriété methodes d'une application Vue contient des fonctions, qui sont généralement appelées à partir du modèle, bien qu'elles puissent également être appelées à partir d'ailleurs dans le script.
+      * Si vous regardez dans le modèle, vous trouverez un formulaire qui appelle cette méthode "addTodo()".
+      * Les méthodes sont la manière préférée d'effectuer une action qui modifie le modèle de données.
      */
     methods:{
         /**
-         * addTodo() takes whatever is in the text input box, and makes it into a list element. There is no need to call a `render()` method, as Vue can determine on its own what to redraw.
+         * addTodo() prend tout ce qui se trouve dans la zone de saisie de texte et en fait un élément de liste. Il n'est pas nécessaire d'appeler une méthode `render()`, car Vue peut déterminer par elle-même ce qu'il faut redessiner.
          */
         addTodo(){
             todos.push({
@@ -86,7 +86,7 @@ new Vue({
             });
 
             /**
-             * Vue components can access their own properties through the "this" special keyword.
+             * Les composants Vue peuvent accéder à leurs propres propriétés via le mot-clé spécial "this".
              */
             this.text = ``;
         },

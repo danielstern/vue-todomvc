@@ -14,27 +14,27 @@
         Vue TodoMVC
     </h1>
 
-    <!-- This div, with the ID "app", is where the application appears when it runs. -->
+    <!-- Cette div, avec l'ID "app", est l'endroit où l'application apparaît lorsqu'elle s'exécute. -->
     <div id="app"></div>
 
-    <!-- This unusual tag is a script text/template. It does not actually appear on the page as HTML. However, Vue can reference this HTML by ID and use it essentially as a template string. -->
+    <!-- Cette balise inhabituelle est un texte/modèle de script. Il n'apparaît pas réellement sur la page en HTML. Cependant, Vue peut référencer ce HTML par ID et l'utiliser essentiellement comme chaîne de modèle. -->
     <script type="text/x-template" id="app-template">
         <section>
 
-            <!-- Here the v:on attribute is used, which is used to respond to any event. In this case, when the "click" event happens, it causes the value of showComplete to be changed. It is attached here to the label. -->
+            <!-- Ici, l'attribut v:on est utilisé, qui est utilisé pour répondre à n'importe quel événement. Dans ce cas, lorsque l'événement "click" se produit, il modifie la valeur de showComplete. Il est attaché ici à l'étiquette. -->
             <h4>
                 <label v-on:click="showComplete = !showComplete">
 
-                    <!-- The v-model attribute causes the checkdness of this box to always mirror the application's state  -->
+                    <!-- L'attribut v-model fait que la vérification de cette case reflète toujours l'état de l'application  -->
                     <input type="checkbox" v-model="showComplete">
                     Show Completed
                 </label>
             </h4>
 
-            <!-- This list group contains a Vue repeater.-->
+            <!-- Ce groupe de liste contient un répéteur Vue.-->
             <ul class="list-group">
 
-                <!-- The v-for attribute that we see here repeats whatever tag it is on (in this case, a LI) one time for each element of the referenced list, which in this case is our list. Each repetition, the property has a different value.  -->
+                <!-- L'attribut v-for que nous voyons ici répète quelle que soit la balise sur laquelle il se trouve (dans ce cas, un LI) une fois pour chaque élément de la liste référencée, qui dans ce cas est notre liste. A chaque répétition, la propriété a une valeur différente. -->
                 <li v-for="todo in filteredTodos" class="list-group-item" v-on:click="todo.complete = !todo.complete;">
                     <label class="form-check-label ml-4">
                         <input
@@ -42,18 +42,18 @@
                                 v-model="todo.complete"
                                 class="form-check-input">
 
-                        <!-- v-bind is used to change the value of HTML attributes, in this case the class attribute. -->
+                        <!-- v-bind est utilisé pour modifier la valeur des attributs HTML, dans ce cas l'attribut class.-->
                         <span
                                 v-bind:class="{completed:todo.complete}">
 
-                                <!-- Here we see an example of Vue's {{ }} syntax, which is quite familiar to any Angular or Handlebars users.-->
+                                <!-- Nous voyons ici un exemple de la syntaxe {{ }} de Vue, qui est assez familière à tous les utilisateurs d'Angular ou de Handlebars.-->
                                 {{ todo.name }}
                             </span>
                     </label>
                 </li>
             </ul>
 
-            <!-- Here, a form is used to contain the submit button (which allows keyboard input to be captured.) Notice the v-on directive being used. The .prevent method works the same as submit, but also prevents the default behavior. -->
+            <!-- Ici, un formulaire est utilisé pour contenir le bouton d'envoi (qui permet de capturer la saisie au clavier.) Notez que la directive v-on est utilisée. La méthode .prevent fonctionne de la même manière que submit, mais empêche également le comportement par défaut. -->
             <form v-on:submit.prevent="addTodo" class="mt-3">
                 <input
                         type="text"
@@ -61,7 +61,7 @@
                         class="form-control"
                         placeholder="Add new!">
 
-                <!-- Note the property :disabled. It begins with a colon (:), indicating that Vue should interpret the value as an expression, and not a string.-->
+                <!-- Notez la propriété :désactivé. Il commence par deux points (:), indiquant que Vue doit interpréter la valeur comme une expression, et non comme une chaîne.-->
                 <button
                         :disabled="submitIsDisabled"
                         class="btn btn-primary mt-2">
@@ -71,9 +71,9 @@
         </section>
     </script>
 
-    <!-- Vue can be included as a script tag at the end of the application's HTML. There is no need for a build step at all, if you don't want one. -->
+    <!-- Vue peut être inclus en tant que balise de script à la fin du code HTML de l'application. Il n'y a pas du tout besoin d'une étape de construction, si vous n'en voulez pas. -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
-    <!-- Finally, the JavaScript file containing our application logic. -->
+    <!-- Enfin, le fichier JavaScript contenant notre logique applicative. -->
     <script src="app.js"></script>
 </body>
