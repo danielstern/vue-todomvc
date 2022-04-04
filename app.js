@@ -9,13 +9,13 @@
  * Changing these todos will change their appearance in the application.
  */
 let todos = [{
-    name:"Debug UI",
+    name:"Understand how the To Do list from Daniel Stern is working ",
     complete: false,
 },{
-    name:"Refactor build step",
+    name:"Free to use and modify without attribution.",
     complete: true
 },{
-    name: "Upgrade Component",
+    name: "Upgrade knowleadge on Vue",
     complete: false
 }];
 
